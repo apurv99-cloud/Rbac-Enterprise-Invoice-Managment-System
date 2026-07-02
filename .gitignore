@@ -32,8 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 src/main/resources/application.properties
-src/main/java/com/example/demo/Configuration/ModuleSeeder.java
-src/main/java/com/example/demo/Configuration/PermissionSeeder.java
-src/main/java/com/example/demo/Configuration/RolePermissionSeeder.java
-src/main/java/com/example/demo/Configuration/RoleSeeder.java
-src/main/java/com/example/demo/Configuration/SuperAdminSeeder.java
+src/main/java/com/example/demo/Configuration
+
