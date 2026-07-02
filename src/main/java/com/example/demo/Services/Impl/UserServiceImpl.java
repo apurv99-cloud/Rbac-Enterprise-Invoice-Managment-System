@@ -252,10 +252,10 @@ public class UserServiceImpl implements UserService {
 
         Role orgAdminRole =
                 roleRepository.findByRoleName(
-                                "ROLE_ORG_ADMIN")
+                                "ORG_ADMIN")
                         .orElseThrow(() ->
                                 new RuntimeException(
-                                        "ROLE_ORG_ADMIN not found"));
+                                        "ORG_ADMIN not found"));
 
         Users_Role userRole =
                 Users_Role.builder()

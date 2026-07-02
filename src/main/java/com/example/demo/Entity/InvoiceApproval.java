@@ -26,7 +26,7 @@ public class InvoiceApproval {
 
     @ManyToOne
     @JoinColumn(name = "stepId")
-    private WorkFlowStep workflowStep;
+    private WorkflowStep workflowStep;
 
     @ManyToOne
     @JoinColumn(name = "approver_id")

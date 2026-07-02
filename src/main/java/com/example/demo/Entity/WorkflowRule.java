@@ -12,10 +12,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class WorkFlowRule {
+public class WorkflowRule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rule_id;
+    @Column(name ="rule_id")
+    private Long ruleId;
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal minAmount;
@@ -24,7 +25,7 @@ public class WorkFlowRule {
 
     @ManyToOne
     @JoinColumn(name = "workFlowId")
-    private WorkFlowMaster workFlowMaster;
+    private WorkflowMaster workflow;
 
 
 }

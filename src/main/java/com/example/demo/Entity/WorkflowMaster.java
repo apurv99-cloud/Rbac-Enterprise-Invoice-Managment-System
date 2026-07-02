@@ -10,14 +10,15 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class WorkFlowMaster {
+public class WorkflowMaster {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long workFlowId;
+    @Column(name = "workflow_id")
+    private Long workflowId;
 
     @Column(nullable = false)
-    private String workFlowName;
+    private String workflowName;
 
     @ManyToOne
     @JoinColumn(name = "organization_id")

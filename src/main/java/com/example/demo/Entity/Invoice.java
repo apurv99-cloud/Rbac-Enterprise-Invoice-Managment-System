@@ -36,7 +36,7 @@ public class Invoice {
 
     @ManyToOne
     @JoinColumn(name = "workflow_id")
-    private WorkFlowMaster workflow;
+    private WorkflowMaster workflow;
 
     @ManyToOne
     @JoinColumn(name = "organization_id")

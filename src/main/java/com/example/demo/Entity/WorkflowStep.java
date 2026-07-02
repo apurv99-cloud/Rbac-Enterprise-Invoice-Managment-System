@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class WorkFlowStep {
+public class WorkflowStep {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stepId;
@@ -23,7 +23,7 @@ public class WorkFlowStep {
 
     @ManyToOne
     @JoinColumn(name = "workFlowId")
-    private WorkFlowMaster workflow;
+    private WorkflowMaster workflow;
 
     @ManyToOne
     @JoinColumn(name = "role_id")

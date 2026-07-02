@@ -20,7 +20,7 @@ public class Escalation {
 
     @ManyToOne
     @JoinColumn(name = "workflow_step_id")
-    private WorkFlowStep workflowStep;
+    private WorkflowStep workflowStep;
 
     @ManyToOne
     @JoinColumn(name = "escalate_to_role")
