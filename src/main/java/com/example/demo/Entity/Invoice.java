@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,7 +25,9 @@ public class Invoice {
     @Column(nullable = false, unique = true)
     private String invoiceNumber;
 
-    private Double amount;
+    //    private Double amount;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal amount;
 
     private String description;
 
@@ -42,11 +46,17 @@ public class Invoice {
     @JoinColumn(name = "organization_id")
     private Organization organization;
 
+    private String invoiceTitle;
+
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    private LocalDate invoiceDate;
+    private LocalDate dueDate;
 
     private Boolean deleted = false;
 

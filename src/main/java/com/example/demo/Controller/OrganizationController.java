@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.ApiResponse;
 import com.example.demo.DTO.Organization.*;
 import com.example.demo.DTO.User.UserResponse;
 import com.example.demo.Services.OrganizationService;
@@ -7,9 +8,10 @@ import com.example.demo.Services.OrganizationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -21,64 +23,98 @@ public class OrganizationController {
 
     @PostMapping
 //    @PreAuthorize("hasRole('SUPER_ADMIN')")
-    public OrganizationResponse createOrganization(
+    public ResponseEntity<ApiResponse<OrganizationResponse>> createOrganization(
             @Valid
             @RequestBody
             CreateOrganizationRequest request) {
 
-        return organizationService
-                .createOrganization(request);
+        OrganizationResponse resp = organizationService.createOrganization(request);
+        ApiResponse<OrganizationResponse> api = ApiResponse.<OrganizationResponse>builder()
+                .success(true)
+                .message("Organization created successfully")
+                .data(resp)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PutMapping("/{organizationId}")
 //    @PreAuthorize("hasRole('SUPER_ADMIN')")
-    public OrganizationResponse updateOrganization(
+    public ResponseEntity<ApiResponse<OrganizationResponse>> updateOrganization(
             @PathVariable Long organizationId,
             @RequestBody UpdateOrganizationRequest request) {
 
-        return organizationService
-                .updateOrganization(
-                        organizationId,
-                        request);
+        OrganizationResponse resp = organizationService.updateOrganization(organizationId, request);
+        ApiResponse<OrganizationResponse> api = ApiResponse.<OrganizationResponse>builder()
+                .success(true)
+                .message("Organization updated successfully")
+                .data(resp)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
 
     @GetMapping("/{organizationId}")
 //    @PreAuthorize("hasRole('SUPER_ADMIN')")
-    public OrganizationResponse getOrganization(
+    public ResponseEntity<ApiResponse<OrganizationResponse>> getOrganization(
             @PathVariable Long organizationId) {
 
-        return organizationService
-                .getOrganization(organizationId);
+        OrganizationResponse resp = organizationService.getOrganization(organizationId);
+        ApiResponse<OrganizationResponse> api = ApiResponse.<OrganizationResponse>builder()
+                .success(true)
+                .message("Organization fetched successfully")
+                .data(resp)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
 
     @GetMapping
 //    @PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
 //    @PreAuthorize("hasAuthority('ROLE_SUPER_ADMIN')")
-    public List<OrganizationResponse>
+    public ResponseEntity<ApiResponse<List<OrganizationResponse>>>
     getAllOrganizations() {
 
-        return organizationService
-                .getAllOrganizations();
+        List<OrganizationResponse> list = organizationService.getAllOrganizations();
+        ApiResponse<List<OrganizationResponse>> api = ApiResponse.<List<OrganizationResponse>>builder()
+                .success(true)
+                .message("Organizations fetched successfully")
+                .data(list)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PatchMapping("/{organizationId}/activate")
 //    @PreAuthorize("hasRole('SUPER_ADMIN')")
-    public void activateOrganization(
+    public ResponseEntity<ApiResponse<Object>> activateOrganization(
             @PathVariable Long organizationId) {
 
-        organizationService
-                .activateOrganization(organizationId);
+        organizationService.activateOrganization(organizationId);
+        ApiResponse<Object> api = ApiResponse.builder()
+                .success(true)
+                .message("Organization activated successfully")
+                .data(null)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PatchMapping("/{organizationId}/deactivate")
 //    @PreAuthorize("hasRole('SUPER_ADMIN')")
-    public void deactivateOrganization(
+    public ResponseEntity<ApiResponse<Object>> deactivateOrganization(
             @PathVariable Long organizationId) {
 
-        organizationService
-                .deactivateOrganization(organizationId);
+        organizationService.deactivateOrganization(organizationId);
+        ApiResponse<Object> api = ApiResponse.builder()
+                .success(true)
+                .message("Organization deactivated successfully")
+                .data(null)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
 //    @PostMapping("/{organizationId}/admin")
@@ -95,22 +131,32 @@ public class OrganizationController {
 
     @PostMapping("/{organizationId}/send-onboarding")
 //    @PreAuthorize("hasRole('SUPER_ADMIN')")
-    public void sendOnboarding(
+    public ResponseEntity<ApiResponse<Object>> sendOnboarding(
             @PathVariable Long organizationId) {
 
-        organizationService
-                .sendOrganizationOnboarding(
-                        organizationId);
+        organizationService.sendOrganizationOnboarding(organizationId);
+        ApiResponse<Object> api = ApiResponse.builder()
+                .success(true)
+                .message("Organization onboarding email sent")
+                .data(null)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PostMapping("/complete-onboarding")
-    public void completeOnboarding(
+    public ResponseEntity<ApiResponse<Object>> completeOnboarding(
             @RequestBody
             CompleteOnboardingRequest request) {
 
-        organizationService
-                .completeOnboarding(
-                        request);
+        organizationService.completeOnboarding(request);
+        ApiResponse<Object> api = ApiResponse.builder()
+                .success(true)
+                .message("Organization onboarding completed")
+                .data(null)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
 

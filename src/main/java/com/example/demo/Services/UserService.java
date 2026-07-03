@@ -2,6 +2,7 @@ package com.example.demo.Services;
 
 import com.example.demo.DTO.Organization.CreateOrgAdminRequest;
 import com.example.demo.DTO.User.*;
+import com.example.demo.Entity.Users;
 
 import java.util.List;
 
@@ -28,4 +29,6 @@ public interface UserService {
     UserResponse createOrganizationAdmin(
             Long organizationId,
             CreateOrgAdminRequest request);
+
+    void assignRoleToUser(Users user, String roleName);
 }

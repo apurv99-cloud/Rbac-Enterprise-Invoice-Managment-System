@@ -3,6 +3,8 @@ package com.example.demo.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "invoice_approvals")
 @Getter
@@ -21,16 +23,18 @@ public class InvoiceApproval {
     private String comments;
 
     @ManyToOne
-    @JoinColumn(name = "invoiceId")
+    @JoinColumn(name = "invoice_Id")
     private Invoice invoice;
 
     @ManyToOne
-    @JoinColumn(name = "stepId")
+    @JoinColumn(name = "step_Id")
     private WorkflowStep workflowStep;
 
     @ManyToOne
     @JoinColumn(name = "approver_id")
     private Users approver;
+
+    private LocalDateTime actionAt;
 
 
 }

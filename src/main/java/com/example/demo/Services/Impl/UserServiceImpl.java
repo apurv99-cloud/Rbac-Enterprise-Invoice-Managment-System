@@ -33,9 +33,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse createUser(CreateUserRequest request) {
 
-//        if (userRepository.existsByEmail(request.getEmail())) {
-//            throw new RuntimeException("Email already exists");
-//        }
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new RuntimeException("Email already exists");
         }
@@ -55,6 +52,8 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         Users savedUser = userRepository.save(users);
+
+        assignRoleToUser(savedUser, request.getRoleName());
 
         return mapToResponse(savedUser);
     }
@@ -177,45 +176,59 @@ public class UserServiceImpl implements UserService {
 //        return response;
 //    }
 
+    @Override
+    public void assignRoleToUser(Users user, String roleName) {
+       Role role = roleRepository.findByRoleName(roleName)
+               .orElseThrow(() ->
+                       new RuntimeException("Role not found: " + roleName));
+
+       Users_Role userRole = Users_Role.builder()
+               .users(user)
+               .role(role)
+               .build();
+
+       userRoleRepository.save(userRole);
+    }
+
     private UserResponse mapToResponse(
-            Users users) {
+           Users users) {
 
-        UserResponse response =
-                new UserResponse();
+       UserResponse response =
+               new UserResponse();
 
-        response.setUserId(
-                users.getUser_id());
+       response.setUserId(
+               users.getUserId());
 
-        response.setFullName(
-                users.getFullName());
+       response.setFullName(
+               users.getFullName());
 
-        response.setEmail(
-                users.getEmail());
+       response.setEmail(
+               users.getEmail());
 
-        response.setOrganizationId(
-                users.getOrganization()
-                        .getOrganizationId());
+       response.setOrganizationId(
+               users.getOrganization()
+                       .getOrganizationId());
 
-        response.setOrganizationName(
-                users.getOrganization()
-                        .getOrganizationName());
+       response.setOrganizationName(
+               users.getOrganization()
+                       .getOrganizationName());
 
-        response.setActive(
-                users.getActive());
+       response.setActive(
+               users.getActive());
 
-        response.setCreatedAt(
-                users.getCreatedAt());
+       response.setCreatedAt(
+               users.getCreatedAt());
 
-        Optional<Users_Role> userRole =
-                userRoleRepository
-                        .findFirstByUsers(users);
+       Optional<Users_Role> userRole =
+               userRoleRepository
+                       .findFirstByUsers(users);
 
-        userRole.ifPresent(role ->
-                response.setRoleName(
-                        role.getRole()
-                                .getRoleName()));
+       userRole.ifPresent(role ->
+               response.setRoleName(
+                       role.getRole()
+                               .getRoleName()));
 
-        return response;
+       return response;
     }
 
     @Override
@@ -269,7 +282,7 @@ public class UserServiceImpl implements UserService {
                 new UserResponse();
 
         response.setUserId(
-                savedUser.getUser_id());
+                savedUser.getUserId());
 
         response.setFullName(
                 savedUser.getFullName());

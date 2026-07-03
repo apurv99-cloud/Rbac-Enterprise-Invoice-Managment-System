@@ -29,7 +29,7 @@ public class JwtService {
         Map<String, Object> claims =
                 new HashMap<>();
 
-        claims.put("userId", user.getUser_id());
+        claims.put("userId", user.getUserId());
         claims.put("role", role);
 
         if (user.getOrganization() != null) {

@@ -22,4 +22,7 @@ public class CreateUserRequest {
 
     @NotNull
     private Long organizationId;
+
+    @NotBlank
+    private String roleName;
 }

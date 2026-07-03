@@ -36,13 +36,12 @@ public class PermissionServiceImpl
                                 new RuntimeException(
                                         "User not found"));
 
-        Users_Role userRole =
-                userRoleRepository.findByUsers(user)
-                        .stream()
-                        .findFirst()
-                        .orElseThrow(() ->
-                                new RuntimeException(
-                                        "Role not assigned"));
+        java.util.List<Users_Role> userRoles =
+                userRoleRepository.findByUsers(user);
+
+        if (userRoles == null || userRoles.isEmpty()) {
+            throw new RuntimeException("Role not assigned");
+        }
 
         Permission permission =
                 permissionRepository
@@ -54,12 +53,16 @@ public class PermissionServiceImpl
                                 new RuntimeException(
                                         "Permission not found"));
 
-        return rolePermissionRepository
-                .findByRole(userRole.getRole())
-                .stream()
-                .map(RolePermission::getPermission)
-                .anyMatch(p ->
-                        p.getPermissionId()
-                                .equals(permission.getPermissionId()));
+        // Check across all roles assigned to user
+        for (Users_Role ur : userRoles) {
+            boolean has = rolePermissionRepository
+                    .findByRole(ur.getRole())
+                    .stream()
+                    .map(RolePermission::getPermission)
+                    .anyMatch(p -> p.getPermissionId().equals(permission.getPermissionId()));
+            if (has) return true;
+        }
+
+        return false;
     }
 }

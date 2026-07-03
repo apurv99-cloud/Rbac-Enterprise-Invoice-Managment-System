@@ -7,6 +7,7 @@
     import com.example.demo.Repository.*;
     import com.example.demo.Services.EmailService;
     import com.example.demo.Services.OrganizationService;
+    import com.example.demo.Services.UserService;
     
     import jakarta.transaction.Transactional;
     import lombok.RequiredArgsConstructor;
@@ -22,17 +23,18 @@
     @Service
     @RequiredArgsConstructor
     public class OrganizationServiceImpl
-            implements OrganizationService {
+           implements OrganizationService {
     
-        private final OrganizationRepository organizationRepository;
-        private final UserRoleRepository userRoleRepository;
-        private final PasswordEncoder passwordEncoder;
-        private final UserRepository userRepository;
-        private final RoleRepository roleRepository;
-        private final OrganizationOnboardingTokenRepository
-                organizationOnboardingTokenRepository;
+       private final OrganizationRepository organizationRepository;
+       private final UserRoleRepository userRoleRepository;
+       private final PasswordEncoder passwordEncoder;
+       private final UserRepository userRepository;
+       private final RoleRepository roleRepository;
+       private final OrganizationOnboardingTokenRepository
+               organizationOnboardingTokenRepository;
     
-        private final EmailService emailService;
+       private final EmailService emailService;
+       private final UserService userService;
     //    private Organization organization;
     
     
@@ -273,7 +275,7 @@
             UserResponse response =
                     new UserResponse();
     
-            response.setUserId(savedUser.getUser_id());
+            response.setUserId(savedUser.getUserId());
             response.setFullName(savedUser.getFullName());
             response.setEmail(savedUser.getEmail());
             response.setOrganizationId(
@@ -294,7 +296,7 @@
                     new UserResponse();
     
             response.setUserId(
-                    users.getUser_id());
+                    users.getUserId());
     
             response.setFullName(
                     users.getFullName());
@@ -404,101 +406,88 @@
     
         @Override
         public UserResponse createOrganizationUser(
-                CreateOrganizationUserRequest request) {
+               CreateOrganizationUserRequest request) {
     
-            Authentication authentication =
-                    SecurityContextHolder
-                            .getContext()
-                            .getAuthentication();
+           Authentication authentication =
+                   SecurityContextHolder
+                           .getContext()
+                           .getAuthentication();
     
-            String email =
-                    authentication.getName();
+           String email =
+                   authentication.getName();
     
-            Users orgAdmin =
-                    userRepository.findByEmail(email)
-                            .orElseThrow(() ->
-                                    new RuntimeException(
-                                            "Org Admin not found"));
+           Users orgAdmin =
+                   userRepository.findByEmail(email)
+                           .orElseThrow(() ->
+                                   new RuntimeException(
+                                           "Org Admin not found"));
     
-            Organization organization =
-                    orgAdmin.getOrganization();
+           Organization organization =
+                   orgAdmin.getOrganization();
     
-            if (organization == null) {
+           if (organization == null) {
     
-                throw new RuntimeException(
-                        "Organization not found");
-            }
+               throw new RuntimeException(
+                       "Organization not found");
+           }
     
-            if (userRepository.findByEmail(
-                    request.getEmail()).isPresent()) {
+           if (userRepository.findByEmail(
+                   request.getEmail()).isPresent()) {
+     
+               throw new RuntimeException(
+                       "Email already exists");
+           }
+     
+           // Get all assignable roles from database
+           List<String> allowedRoles = roleRepository
+                   .findAssignableRoles()
+                   .stream()
+                   .map(Role::getRoleName)
+                   .toList();
+     
+           if (!allowedRoles.contains(request.getRoleName())) {
+     
+               throw new RuntimeException(
+                       "Invalid role assignment");
+           }
     
-                throw new RuntimeException(
-                        "Email already exists");
-            }
+           Users user = Users.builder()
+                   .fullName(request.getFullName())
+                   .email(request.getEmail())
+                   .password(
+                           passwordEncoder.encode(
+                                   request.getPassword()))
+                   .organization(organization)
+                   .active(true)
+                   .deleted(false)
+                   .build();
     
-            List<String> allowedRoles = List.of(
-                    "REVIEWER",
-                    "FINANCE",
-                    "DIRECTOR",
-                    "CFO",
-                    "VENDOR"
-            );
+           Users savedUser =
+                   userRepository.save(user);
     
-            if (!allowedRoles.contains(request.getRoleName())) {
+           userService.assignRoleToUser(savedUser, request.getRoleName());
     
-                throw new RuntimeException(
-                        "Invalid role assignment");
-            }
+           UserResponse response =
+                   new UserResponse();
     
-            Users user = Users.builder()
-                    .fullName(request.getFullName())
-                    .email(request.getEmail())
-                    .password(
-                            passwordEncoder.encode(
-                                    request.getPassword()))
-                    .organization(organization)
-                    .active(true)
-                    .deleted(false)
-                    .build();
+           response.setUserId(savedUser.getUserId());
+           response.setFullName(savedUser.getFullName());
+           response.setEmail(savedUser.getEmail());
     
-            Users savedUser =
-                    userRepository.save(user);
+           response.setOrganizationId(
+                   organization.getOrganizationId());
     
+           response.setOrganizationName(
+                   organization.getOrganizationName());
     
-            Role role =
-                    roleRepository.findByRoleName(
-                                    request.getRoleName())
-                            .orElseThrow(() ->
-                                    new RuntimeException(
-                                            "Role not found"));
+           response.setActive(savedUser.getActive());
     
-            Users_Role userRole =
-                    Users_Role.builder()
-                            .users(savedUser)
-                            .role(role)
-                            .build();
+           response.setCreatedAt(
+                   savedUser.getCreatedAt());
     
-            userRoleRepository.save(userRole);
+           response.setRoleName(request.getRoleName());
     
-            UserResponse response =
-                    new UserResponse();
-    
-            response.setUserId(savedUser.getUser_id());
-            response.setFullName(savedUser.getFullName());
-            response.setEmail(savedUser.getEmail());
-    
-            response.setOrganizationId(
-                    organization.getOrganizationId());
-    
-            response.setOrganizationName(
-                    organization.getOrganizationName());
-    
-            response.setActive(savedUser.getActive());
-    
-            response.setCreatedAt(
-                    savedUser.getCreatedAt());
-    
-            return response;
+           return response;
         }
     
         @Override
@@ -549,8 +538,8 @@
                                     authentication.getName())
                             .orElseThrow();
     
-            if (targetUser.getUser_id()
-                    .equals(admin.getUser_id())) {
+            if (targetUser.getUserId()
+                    .equals(admin.getUserId())) {
     
                 throw new RuntimeException(
                         "You cannot deactivate yourself");

@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.ApiResponse;
 import com.example.demo.DTO.User.CreateOrganizationUserRequest;
 import com.example.demo.DTO.User.CreateUserRequest;
 import com.example.demo.DTO.User.UpdateUserRequest;
@@ -10,9 +11,10 @@ import com.example.demo.Services.OrganizationService;
 import com.example.demo.Services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -25,76 +27,131 @@ public class UserController {
     private final UserRepository userRepository;
 
     @PostMapping
-    public UserResponse createUsers(
+    public ResponseEntity<ApiResponse<UserResponse>> createUsers(
             @Valid @RequestBody CreateUserRequest request) {
 
-        return userService.createUser(request);
+        UserResponse resp = userService.createUser(request);
+        ApiResponse<UserResponse> api = ApiResponse.<UserResponse>builder()
+                .success(true)
+                .message("User created successfully")
+                .data(resp)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PutMapping("/{userId}")
-    public UserResponse updateUser(
+    public ResponseEntity<ApiResponse<UserResponse>> updateUser(
             @PathVariable Long userId,
             @RequestBody UpdateUserRequest request) {
 
-        return userService.updateUser(userId, request);
+        UserResponse resp = userService.updateUser(userId, request);
+        ApiResponse<UserResponse> api = ApiResponse.<UserResponse>builder()
+                .success(true)
+                .message("User updated successfully")
+                .data(resp)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @GetMapping("/{userId}")
-    public UserResponse getUser(
+    public ResponseEntity<ApiResponse<UserResponse>> getUser(
             @PathVariable Long userId) {
 
-        return userService.getUser(userId);
+        UserResponse resp = userService.getUser(userId);
+        ApiResponse<UserResponse> api = ApiResponse.<UserResponse>builder()
+                .success(true)
+                .message("User fetched successfully")
+                .data(resp)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @GetMapping
-    public List<UserResponse> getAllUsers() {
+    public ResponseEntity<ApiResponse<List<UserResponse>>> getAllUsers() {
 
-        return userService.getAllUsers();
+        List<UserResponse> list = userService.getAllUsers();
+        ApiResponse<List<UserResponse>> api = ApiResponse.<List<UserResponse>>builder()
+                .success(true)
+                .message("All users fetched successfully")
+                .data(list)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
 
     @GetMapping("/organization/{organizationId}")
-    public List<UserResponse> getUsersByOrganization(
+    public ResponseEntity<ApiResponse<List<UserResponse>>> getUsersByOrganization(
             @PathVariable Long organizationId) {
 
-        return userService.getUsersByOrganization(organizationId);
+        List<UserResponse> list = userService.getUsersByOrganization(organizationId);
+        ApiResponse<List<UserResponse>> api = ApiResponse.<List<UserResponse>>builder()
+                .success(true)
+                .message("Users for organization fetched successfully")
+                .data(list)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PostMapping("/organization-user")
-    @PreAuthorize("hasRole('ORG_ADMIN')")
-    public UserResponse createOrganizationUser(
+    public ResponseEntity<ApiResponse<UserResponse>> createOrganizationUser(
             @RequestBody
             CreateOrganizationUserRequest request) {
 
-        return organizationService
-                .createOrganizationUser(request);
+        UserResponse resp = organizationService.createOrganizationUser(request);
+        ApiResponse<UserResponse> api = ApiResponse.<UserResponse>builder()
+                .success(true)
+                .message("Organization user created successfully")
+                .data(resp)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @GetMapping("/my-organization")
-    @PreAuthorize("hasRole('ORG_ADMIN')")
-    public List<UserResponse>
+    public ResponseEntity<ApiResponse<List<UserResponse>>>
     getMyOrganizationUsers() {
 
-        return organizationService
-                .getMyOrganizationUsers();
+        List<UserResponse> list = organizationService.getMyOrganizationUsers();
+        ApiResponse<List<UserResponse>> api = ApiResponse.<List<UserResponse>>builder()
+                .success(true)
+                .message("My organization users fetched successfully")
+                .data(list)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PatchMapping("/{userId}/deactivate")
-    @PreAuthorize("hasRole('ORG_ADMIN')")
-    public void deactivateUser(
+    public ResponseEntity<ApiResponse<Object>> deactivateUser(
             @PathVariable Long userId) {
 
-        organizationService
-                .deactivateOrganizationUser(userId);
+        organizationService.deactivateOrganizationUser(userId);
+        ApiResponse<Object> api = ApiResponse.builder()
+                .success(true)
+                .message("User deactivated successfully")
+                .data(null)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
     @PatchMapping("/{userId}/activate")
-    @PreAuthorize("hasRole('ORG_ADMIN')")
-    public void activateUser(
+    public ResponseEntity<ApiResponse<Object>> activateUser(
             @PathVariable Long userId) {
 
-        organizationService
-                .activateOrganizationUser(userId);
+        organizationService.activateOrganizationUser(userId);
+        ApiResponse<Object> api = ApiResponse.builder()
+                .success(true)
+                .message("User activated successfully")
+                .data(null)
+                .timestamp(LocalDateTime.now())
+                .build();
+        return ResponseEntity.ok(api);
     }
 
 

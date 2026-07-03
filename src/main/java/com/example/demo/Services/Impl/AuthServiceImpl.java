@@ -90,7 +90,7 @@ public class AuthServiceImpl implements AuthService {
 
         UserResponse response = new UserResponse();
 
-        response.setUserId(user.getUser_id());
+        response.setUserId(user.getUserId());
 
         response.setFullName(user.getFullName());
 
