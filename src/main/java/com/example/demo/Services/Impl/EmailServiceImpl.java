@@ -15,12 +15,12 @@ public class EmailServiceImpl
 
     @Override
     public void sendOnboardingEmail(
-            String email,
+            String email,       
             String organizationName,
             String token) {
 
         String onboardingLink =
-                "http://localhost:3001/onboard/" + token;
+                "http://localhost:5173/complete-onboarding?token=" + token;
 
         SimpleMailMessage message =
                 new SimpleMailMessage();
