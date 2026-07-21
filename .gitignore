@@ -33,4 +33,5 @@ build/
 .vscode/
 src/main/resources/application.properties
 src/main/java/com/example/demo/Configuration
+*.env
 
