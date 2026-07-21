@@ -1,40 +1,44 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import invoiceService from "../../Services/invoiceService";
 import DashboardHeader from "../../Components/dashboard/DashboardHeader";
-import InvoiceTable from "../../Components/invoice/InvoiceTable";
+import PaymentTable from "../../Components/Payment/PaymentTable";
+import paymentService from "../../Services/paymentService";
 
 const Payments = () => {
-  const [invoices, setInvoices] = useState([]);
+  const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
-  const fetchInvoices = async () => {
+  const fetchPayments = async () => {
     try {
       setLoading(true);
-      const response = await invoiceService.getOrganizationInvoices();
-      setInvoices((response || []).filter((item) => item.status === "PAID" || item.status === "APPROVED"));
+
+      const response = await paymentService.getAllPayments();
+
+      setPayments(response || []);
     } catch (error) {
-      toast.error(error?.message || "Failed to load payments.");
+      toast.error(
+        error?.response?.data?.message ||
+          error?.message ||
+          "Failed to load payments.",
+      );
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchInvoices();
+    fetchPayments();
   }, []);
-
-  const handleView = (invoice) => {
-    navigate(`/finance/payments/${invoice.invoiceId}`);
-  };
 
   return (
     <div className="space-y-6">
-      <DashboardHeader title="Payments" subtitle="Track invoices currently in the payment pipeline." />
-      <InvoiceTable invoices={invoices} loading={loading} onEdit={handleView} onSubmit={undefined} />
+      <DashboardHeader
+        title="Payments"
+        subtitle="View all completed payment transactions across the organization."
+      />
+
+      <PaymentTable payments={payments} loading={loading} />
     </div>
   );
 };

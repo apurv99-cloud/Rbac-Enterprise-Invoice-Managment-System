@@ -13,6 +13,7 @@ const roleLabels = {
   REVIEWER: "Reviewer",
   FINANCE: "Finance",
   CFO: "CFO",
+  DIRECTOR: "DIRECTOR",
   VENDOR: "Vendor",
 };
 

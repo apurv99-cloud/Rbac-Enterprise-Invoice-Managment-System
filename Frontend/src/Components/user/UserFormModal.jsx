@@ -138,7 +138,7 @@ const UserFormModal = ({ isOpen, onClose, onSubmit, initialData = null }) => {
               >
                 <option value="REVIEWER">Reviewer</option>
                 <option value="FINANCE">Finance</option>
-                <option value="CFO">CFO</option>
+                {/* <option value="CFO">CFO</option> */}
                 <option value="VENDOR">Vendor</option>
                 <option value="ORG_ADMIN">Organization Admin</option>
               </select>
