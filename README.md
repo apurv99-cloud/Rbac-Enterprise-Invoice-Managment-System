@@ -1,425 +1,319 @@
-#   Enterprise Invoice Management System
+# Enterprise Invoice Approval System
 
-A Full Stack Multi-Tenant SaaS-Based Invoice Management Platform built using **Spring Boot, PostgreSQL, JWT Authentication, React, Vite, and Role-Based Access Control (RBAC).**
-
-The platform enables multiple organizations (tenants) to operate independently within the same application while maintaining complete data isolation, secure authentication, enterprise-grade onboarding, and configurable approval workflows.
+A full-stack enterprise-grade Invoice Approval System built with **Spring Boot**, **React**, **PostgreSQL**, and **Spring Security**. The application streamlines invoice submission, approval workflows, payment processing, and role-based access management for organizations.
 
 ---
 
-#   Project Overview
+## Features
 
-This project simulates a real-world enterprise invoice processing system where:
+### Authentication & Authorization
 
-* Super Admin manages organizations.
-* Organizations onboard through secure invitation links.
-* Organization Admins manage users inside their workspace.
-* Role-based access controls determine permissions.
-* Invoice approval workflows can be configured dynamically.
-* Secure JWT authentication protects all resources.
-
----
-
-#   Multi-Tenant Architecture
-
-The application follows a:
-
-### Shared Database + Shared Schema Multi-Tenant Architecture
-
-Each organization acts as an independent tenant.
-
-### Features
-
-* Organization Isolation
-* Tenant-Specific Users
-* Tenant-Specific Roles
-* Tenant-Specific Permissions
-* Secure Access Control
-* Organization-Based Data Ownership
+- JWT Authentication
+- Spring Security
+- Role-Based Access Control (RBAC)
+- Secure REST APIs
+- Multi-tenant Organization Support
 
 ---
 
-#   Frontend Architecture
+### Organization Management
 
-Built using:
+- Super Admin Dashboard
+- Create Organizations
+- Activate / Deactivate Organizations
+- Organization-wise User Management
 
-* React.js
-* Vite
-* React Router DOM
-* Axios
-* Tailwind CSS
-* Lucide React Icons
+---
 
-### Frontend Modules
+### User Management
 
-```text
-Landing Page
-Authentication
-Super Admin Dashboard
-Organization Management
-Organization Onboarding
-Protected Routes
-Role-Based Navigation
+- Create Users
+- Update Users
+- Activate / Deactivate Users
+- Organization-specific Users
+- User Profiles
+
+---
+
+### Invoice Management
+
+- Submit Invoices
+- Invoice Details
+- Invoice Status Tracking
+- Approval Workflow
+- Invoice History
+
+---
+
+### Reviewer Module
+
+- Review Submitted Invoices
+- Approve Invoices
+- Reject Invoices
+- Approval Timeline
+
+---
+
+### Finance Module
+
+- Finance Dashboard
+- Approved Invoices
+- Process Payments
+- Payment History
+- Reports Dashboard
+- Finance Profile
+
+---
+
+## User Roles
+
+- Super Admin
+- Organization Admin
+- Reviewer
+- Finance
+- Vendor
+
+---
+
+## Workflow
+
+```
+Vendor
+    │
+    ▼
+Submit Invoice
+    │
+    ▼
+Reviewer
+ ┌──────────────┐
+ │ Approve      │
+ │ Reject       │
+ └──────────────┘
+    │
+    ▼
+Finance
+    │
+Process Payment
+    │
+    ▼
+Invoice Status → PAID
 ```
 
-### Current UI Features
-
-* SaaS Landing Page
-* Enterprise Login System
-* Organization Management Dashboard
-* Organization Onboarding Form
-* Responsive Mobile Navigation
-* Protected Routes
-* JWT Session Handling
-
 ---
 
-#   Authentication & Authorization
-
-Implemented using:
-
-* Spring Security
-* JWT Authentication
-* Role-Based Access Control (RBAC)
-
-### Roles
-
-| Role        | Responsibility                    |
-| ----------- | --------------------------------- |
-| SUPER_ADMIN | Creates and manages organizations |
-| ORG_ADMIN   | Manages users inside organization |
-| REVIEWER    | Reviews invoices                  |
-| FINANCE     | Finance approval                  |
-| DIRECTOR    | Director level approval           |
-| CFO         | Final approval authority          |
-
----
-
-#   Organization Onboarding Flow
-
-### Step 1
-
-Super Admin logs in
-
-### Step 2
-
-Super Admin creates organization
-
-### Step 3
-
-System generates secure onboarding token
-
-### Step 4
-
-Invitation email sent to organization's contact person
-
-### Step 5
-
-Organization Admin completes onboarding
-
-### Step 6
-
-Organization workspace activated
-
-### Step 7
-
-Organization Admin manages users
-
----
-
-#   Features Implemented
-
-## Authentication
-
-* JWT Login
-* Current User API
-* Protected Routes
-* Session Persistence
-* Role Validation
-
-## Organization Management
-
-* Create Organization
-* Update Organization
-* Activate Organization
-* Deactivate Organization
-* Get Organization Details
-* List Organizations
-
-## Organization Onboarding
-
-* Email Based Onboarding
-* Secure Token Generation
-* Token Validation
-* Onboarding Completion
-* Organization Activation
-
-## User Management
-
-* Create Users
-* Update Users
-* Activate Users
-* Deactivate Users
-* Get Users
-* Organization-Specific User Management
-
-## Security
-
-* JWT Authentication
-* Spring Security Integration
-* RBAC Authorization
-* Protected APIs
-* Organization Context Validation
-
----
-
-#   Tech Stack
-
-## Backend
-
-* Java 21
-* Spring Boot
-* Spring Security
-* Spring Data JPA
-* Hibernate
-
-## Frontend
-
-* React.js
-* Vite
-* React Router DOM
-* Axios
-* Tailwind CSS
-* Lucide React
-
-## Database
-
-* PostgreSQL
-
-## Authentication
-
-* JWT
-
-## Email Service
-
-* Spring Mail Sender
-
-## Build Tools
+## Tech Stack
 
 ### Backend
 
-* Maven
+- Java 21
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- JWT Authentication
+- Maven
+- PostgreSQL
 
 ### Frontend
 
-* Node.js
-* npm
+- React
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+- React Hot Toast
+- Lucide Icons
 
-## API Testing
+### Database
 
-* Postman
+- PostgreSQL
 
----
+### Tools
 
-#   Database Design
-
-### Current Tables
-
-```text
-organizations
-users
-roles
-users_roles
-permissions
-role_permissions
-organization_onboarding_tokens
-```
-
-### Upcoming Tables
-
-```text
-invoices
-invoice_approvals
-workflow_master
-workflow_rules
-workflow_steps
-payments
-notifications
-audit_logs
-```
+- Git
+- GitHub
+- Postman
+- IntelliJ IDEA
+- VS Code
 
 ---
 
-#   Application Flow
+## Architecture
 
-## Super Admin
-
-```text
-Login
-   ↓
-Dashboard
-   ↓
-Create Organization
-   ↓
-Send Onboarding Email
 ```
-
-## Organization
-
-```text
-Receive Email
-   ↓
-Complete Onboarding
-   ↓
-Create Password
-   ↓
-Workspace Activated
-```
-
-## Organization Admin
-
-```text
-Login
-   ↓
-Manage Organization Users
-   ↓
-Create Reviewers
-Create Finance Users
-Create Directors
-Create CFO Users
+React Frontend
+        │
+        ▼
+REST APIs
+        │
+        ▼
+Spring Boot
+        │
+        ▼
+Service Layer
+        │
+        ▼
+Repository Layer
+        │
+        ▼
+PostgreSQL
 ```
 
 ---
 
-#   Security Highlights
+## Project Structure
 
-* Stateless Authentication
-* JWT-Based Authorization
-* Role Validation
-* Tenant Isolation
-* Protected Endpoints
-* Secure Password Encryption
-* Organization Access Restrictions
+### Backend
 
----
+```
+src
+├── config
+├── controller
+├── dto
+├── entity
+├── enums
+├── exception
+├── repository
+├── security
+├── service
+└── util
+```
 
-#   Project Structure
+### Frontend
 
-```text
-enterprise-invoice-management-system
-
-├── backend
-│   ├── controllers
-│   ├── services
-│   ├── repositories
-│   ├── entities
-│   ├── security
-│   └── dto
-│
-├── frontend
-│   ├── components
-│   ├── pages
-│   ├── services
-│   ├── routes
-│   ├── context
-│   └── assets
-│
-└── database
+```
+src
+├── Components
+├── Context
+├── Hooks
+├── Layouts
+├── Pages
+├── Routes
+├── Services
+└── Utils
 ```
 
 ---
 
-#   Future Enhancements
+## Database Highlights
 
-## Invoice Module
-
-* Invoice Submission
-* Invoice Attachments
-* Invoice Tracking
-* Invoice History
-
-## Workflow Engine
-
-* Dynamic Workflow Rules
-* Amount-Based Routing
-* Multi-Level Approvals
-* Escalation Management
-
-## Analytics
-
-* Organization Dashboard
-* Invoice Analytics
-* Approval Metrics
-* KPI Tracking
-
-## Notifications
-
-* Email Notifications
-* Approval Alerts
-* Reminder System
-* Activity Feed
-
-## Audit & Monitoring
-
-* Audit Logs
-* User Activity Tracking
-* Security Monitoring
-* Organization Reports
+- Normalized Database Design
+- Multi-tenant Organizations
+- Users & Roles
+- Permissions
+- Invoices
+- Invoice Approval Workflow
+- Payments
+- Notifications
+- Audit Ready Structure
 
 ---
 
-#   System Architecture
+## Security Features
 
-```text
-SUPER ADMIN
-      │
-      ▼
-Create Organization
-      │
-      ▼
-Onboarding Email
-      │
-      ▼
-Organization Admin
-      │
-      ▼
-Create Users
-      │
-      ▼
-Reviewer → Finance → Director → CFO
-      │
-      ▼
-Invoice Approval Workflow
+- JWT Authentication
+- BCrypt Password Encryption
+- Protected Routes
+- Role-Based Authorization
+- Organization Isolation
+
+---
+
+## Future Enhancements
+
+- Email Notifications
+- Audit Logs
+- File Uploads
+- Invoice Attachments
+- Payment Gateway Integration
+- Analytics Dashboard
+- AI-based Invoice Validation
+- Docker Deployment
+- Kubernetes Deployment
+- Microservices Architecture
+
+---
+
+## Installation
+
+### Backend
+
+```bash
+git clone https://github.com/<username>/enterprise-invoice-approval-system.git
+
+cd backend
+
+mvn spring-boot:run
+```
+
+### Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
 ```
 
 ---
 
-#   Learning Outcomes
+## Environment Variables
 
-Through this project:
+Backend
 
-* Multi-Tenant SaaS Architecture
-* Enterprise RBAC Design
-* Spring Security
-* JWT Authentication
-* React Frontend Development
-* Protected Routing
-* Organization-Based Access Control
-* Database Design & Normalization
-* Secure API Development
-* Enterprise Workflow Design
+```
+SPRING_DATASOURCE_URL=
+SPRING_DATASOURCE_USERNAME=
+SPRING_DATASOURCE_PASSWORD=
+
+JWT_SECRET=
+```
+
+Frontend
+
+```
+VITE_API_BASE_URL=http://localhost:8080/api
+```
 
 ---
 
-#   Author
+## Screenshots
 
-### Apurv Sinha
+> Add screenshots of:
 
-B.Tech Computer Science & Applied Mathematics
+- Landing Page
+- Login
+- Super Admin Dashboard
+- Organization Management
+- User Management
+- Reviewer Dashboard
+- Finance Dashboard
+- Payment Processing
+- Reports
 
-Java Backend Developer | Spring Boot | PostgreSQL | React
+---
+
+## Learning Outcomes
+
+- Enterprise Application Architecture
+- REST API Development
+- Spring Security & JWT
+- Role-Based Access Control
+- React Component Architecture
+- PostgreSQL Database Design
+- Multi-Tenant Systems
+- Full-Stack Integration
+
+---
+
+## Author
+
+**Apurv Sinha**
 
 GitHub: https://github.com/apurv99-cloud
 
----
+LinkedIn: https://www.linkedin.com/in/apurva-sinha-b1b259306/
 
-⭐ If you found this project useful, consider giving it a star.
+Portfolio: https://portfolo-eta-six.vercel.app/
+
+---
