@@ -282,14 +282,43 @@ VITE_API_BASE_URL=http://localhost:8080/api
 > Add screenshots of:
 
 - Landing Page
-- Login
+- <img width="1342" height="946" alt="image" src="https://github.com/user-attachments/assets/b461293d-e57d-4d85-b52c-494c36b9dbde" />
+
 - Super Admin Dashboard
+- <img width="1600" height="749" alt="image" src="https://github.com/user-attachments/assets/041c7aa0-7c6b-4521-8979-869a672f6d2b" />
+
 - Organization Management
+- <img width="1600" height="808" alt="image" src="https://github.com/user-attachments/assets/61b9f438-9071-4023-98ca-2d0718a04e1c" />
+
 - User Management
+- <img width="1600" height="751" alt="image" src="https://github.com/user-attachments/assets/0cdbf022-af40-4faf-8b6c-83ea1d0200f5" />
+
+- Vendor Dashboard
+- <img width="1600" height="805" alt="image" src="https://github.com/user-attachments/assets/1d2eee21-399f-4f36-861f-5f659328e9a7" />
+- Create Invoice By Vendor
+- <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/cedee2cb-51d3-4342-bdd8-8364b984ff22" />
+
+
 - Reviewer Dashboard
+- <img width="1600" height="805" alt="image" src="https://github.com/user-attachments/assets/dd0615f1-c5fb-4436-911b-31f5869504e3" />
+- <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/b79b5c61-790f-458e-8f9a-9a78614b3d18" />
+- <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/4027ecff-eafe-4c22-8c00-7ca9ac4f6498" />
+
+
+
+- 
 - Finance Dashboard
+- <img width="1600" height="825" alt="image" src="https://github.com/user-attachments/assets/809903b6-f8d0-4840-81bd-b5c6acea27d1" />
+
 - Payment Processing
+- <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/3f9315dd-a6f0-4a47-a330-bec2124714b3" />
+- After Payment Processed
+- <img width="1600" height="807" alt="image" src="https://github.com/user-attachments/assets/1550f854-ce6a-415d-a7b2-1055749c9695" />
+
+
 - Reports
+- <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/b55e947e-0d3f-4cda-895a-1ad5071c01b2" />
+
 
 ---
 
