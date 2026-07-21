@@ -317,3 +317,6 @@ LinkedIn: https://www.linkedin.com/in/apurva-sinha-b1b259306/
 Portfolio: https://portfolo-eta-six.vercel.app/
 
 ---
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
