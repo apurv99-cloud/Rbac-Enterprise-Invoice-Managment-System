@@ -309,7 +309,8 @@ VITE_API_BASE_URL=http://localhost:8080/api
 
 - Finance Dashboard
   <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/4027ecff-eafe-4c22-8c00-7ca9ac4f6498" />
-  <img width="1600" height="825" alt="image" src="https://github.com/user-attachments/assets/809903b6-f8d0-4840-81bd-b5c6acea27d1" />
+  <img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/9f8589ab-eeca-4615-90ef-77c5395d0c86" />
+
 
 - Payment Processing
   <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/3f9315dd-a6f0-4a47-a330-bec2124714b3" />
