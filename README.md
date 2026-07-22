@@ -315,7 +315,8 @@ VITE_API_BASE_URL=http://localhost:8080/api
 - Payment Processing
   <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/3f9315dd-a6f0-4a47-a330-bec2124714b3" />
   After Payment Processed
-  <img width="1600" height="807" alt="image" src="https://github.com/user-attachments/assets/1550f854-ce6a-415d-a7b2-1055749c9695" />
+  <img width="1905" height="961" alt="image" src="https://github.com/user-attachments/assets/efaf4d38-fadb-40bc-b263-c38dd5a1cef4" />
+
 
 
 - Reports
