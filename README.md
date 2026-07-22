@@ -287,13 +287,19 @@ VITE_API_BASE_URL=http://localhost:8080/api
   <img width="1342" height="946" alt="image" src="https://github.com/user-attachments/assets/b461293d-e57d-4d85-b52c-494c36b9dbde" />
 
 - Super Admin Dashboard
-  <img width="1600" height="749" alt="image" src="https://github.com/user-attachments/assets/041c7aa0-7c6b-4521-8979-869a672f6d2b" />
+- <img width="1917" height="973" alt="image" src="https://github.com/user-attachments/assets/9078dd11-916d-4df8-b7f2-323659f0b17e" />
+
+- Organization Onboarding form
+- <img width="1917" height="966" alt="image" src="https://github.com/user-attachments/assets/222923f4-ca73-496b-9b46-aaee73d9c2ef" />
 
 - Organization Management
-  <img width="1600" height="808" alt="image" src="https://github.com/user-attachments/assets/61b9f438-9071-4023-98ca-2d0718a04e1c" />
+  <img width="1917" height="978" alt="image" src="https://github.com/user-attachments/assets/cda3a6e6-99ce-44be-bc2c-38f124044783" />
+
 
 - User Management
-  <img width="1600" height="751" alt="image" src="https://github.com/user-attachments/assets/0cdbf022-af40-4faf-8b6c-83ea1d0200f5" />
+- <img width="1896" height="967" alt="image" src="https://github.com/user-attachments/assets/82258739-2a5f-4d6b-bc0d-ec49a7e76ed5" />
+- <img width="1915" height="970" alt="image" src="https://github.com/user-attachments/assets/b7bebdb3-54a2-4c0f-ba26-1f0eb174d461" />
+
 
 - Vendor Dashboard
   <img width="1600" height="805" alt="image" src="https://github.com/user-attachments/assets/1d2eee21-399f-4f36-861f-5f659328e9a7" />
