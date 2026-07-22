@@ -1,5 +1,6 @@
 # Enterprise Invoice Approval System
-<img width="1342" height="946" alt="image" src="https://github.com/user-attachments/assets/1ea112dd-b012-4d2e-b91c-c3d634903fb0" />
+<img width="1902" height="965" alt="image" src="https://github.com/user-attachments/assets/5754e5a5-0ca9-4302-8351-7839bd334e0f" />
+
 
 
 A full-stack enterprise-grade Invoice Approval System built with **Spring Boot**, **React**, **PostgreSQL**, and **Spring Security**. The application streamlines invoice submission, approval workflows, payment processing, and role-based access management for organizations.
@@ -284,7 +285,8 @@ VITE_API_BASE_URL=http://localhost:8080/api
 > Screenshots of:
 
 - Landing Page
-  <img width="1342" height="946" alt="image" src="https://github.com/user-attachments/assets/b461293d-e57d-4d85-b52c-494c36b9dbde" />
+  <img width="1902" height="965" alt="image" src="https://github.com/user-attachments/assets/4efc05fa-7bb1-4ed8-98d1-f53f4a7b9752" />
+
 
 - Super Admin Dashboard
 - <img width="1917" height="973" alt="image" src="https://github.com/user-attachments/assets/9078dd11-916d-4df8-b7f2-323659f0b17e" />
