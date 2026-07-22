@@ -302,9 +302,15 @@ VITE_API_BASE_URL=http://localhost:8080/api
 
 
 - Vendor Dashboard
-  <img width="1600" height="805" alt="image" src="https://github.com/user-attachments/assets/1d2eee21-399f-4f36-861f-5f659328e9a7" />
+  <img width="1917" height="972" alt="image" src="https://github.com/user-attachments/assets/b60c7e6b-8e13-4606-ae71-5fc0e3eb536e" />
+
   Create Invoice By Vendor
-  <img width="1600" height="810" alt="image" src="https://github.com/user-attachments/assets/cedee2cb-51d3-4342-bdd8-8364b984ff22" />
+  <img width="1912" height="968" alt="image" src="https://github.com/user-attachments/assets/4b6950d0-114a-4ba4-ba59-da513925f037" />
+
+  Listed Invoices
+  <img width="1912" height="973" alt="image" src="https://github.com/user-attachments/assets/73ddb822-02ba-46b7-bf85-9486a2e047ad" />
+
+
 
 
 - Reviewer Dashboard
