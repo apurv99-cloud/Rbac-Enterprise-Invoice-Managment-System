@@ -1,4 +1,4 @@
-# Enterprise Invoice Approval System
+<img width="1303" height="896" alt="image" src="https://github.com/user-attachments/assets/2f5a8555-d8ca-4093-bcaf-f2cc5e6aae05" /># Enterprise Invoice Approval System
 
 ![Java](https://img.shields.io/badge/Java-21-red)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-green)
@@ -206,11 +206,12 @@ Invoice Status → PAID
 ---
 #  Entity Relationship Diagram (ERD)
 
-The following ER diagram illustrates the relationships between organizations, users, roles, permissions, invoices, approvals, payments, notifications, and workflow entities.
+The database follows a normalized relational design to support multi-tenant organizations, role-based access control, invoice approval workflows, and payment processing.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/afaafad8-dcb7-41c6-8f0d-c922ebbb88c1" alt="ER Diagram" width="100%">
-</p>
+<img width="1303" height="896" alt="image" src="https://github.com/user-attachments/assets/f4b6d1af-71f7-4256-8754-a987602d58f1" />
+
+---
+
 
 # Docker Architecture
 
