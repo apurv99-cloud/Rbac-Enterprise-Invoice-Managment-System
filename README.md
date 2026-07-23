@@ -217,6 +217,9 @@ Invoice Status → PAID
      :3000           :8080             :5432
                           │
                           ▼
+                     pgAdmin
+                      :5050
+```
 
 # 🐳 Docker Deployment
 
