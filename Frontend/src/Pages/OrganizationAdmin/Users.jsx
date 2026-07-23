@@ -161,10 +161,10 @@ const Users = () => {
         </button>
       </div>
 
-      <DashboardHeader
+      {/* <DashboardHeader
         title="Organization User Management"
         subtitle="Create new users, update access roles, and manage activity."
-      />
+      /> */}
 
       <StatsGrid stats={stats} />
 

@@ -44,10 +44,10 @@ const ApprovedInvoices = () => {
 
   return (
     <div className="space-y-6">
-      <DashboardHeader
+      {/* <DashboardHeader
         title="Approved Invoices"
         subtitle="Invoices approved by reviewers and awaiting payment by the finance team."
-      />
+      /> */}
 
       <InvoiceTable
         invoices={invoices}

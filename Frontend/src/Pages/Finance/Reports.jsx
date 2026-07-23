@@ -119,10 +119,10 @@ const Reports = () => {
 
   return (
     <div className="space-y-8">
-      <DashboardHeader
+      {/* <DashboardHeader
         title="Finance Reports"
         subtitle="Financial overview of invoices and payments across the organization."
-      />
+      /> */}
 
       <StatsGrid stats={stats} />
 

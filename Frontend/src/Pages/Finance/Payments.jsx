@@ -33,10 +33,10 @@ const Payments = () => {
 
   return (
     <div className="space-y-6">
-      <DashboardHeader
+      {/* <DashboardHeader
         title="Payments"
         subtitle="View all completed payment transactions across the organization."
-      />
+      /> */}
 
       <PaymentTable payments={payments} loading={loading} />
     </div>
