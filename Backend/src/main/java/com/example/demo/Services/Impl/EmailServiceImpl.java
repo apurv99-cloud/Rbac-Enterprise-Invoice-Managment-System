@@ -1,5 +1,6 @@
 package com.example.demo.Services.Impl;
 
+import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ public class EmailServiceImpl
         implements EmailService {
 
     private final JavaMailSender mailSender;
+      private final Environment environment;
 
     @Override
     public void sendOnboardingEmail(
