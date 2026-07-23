@@ -1,7 +1,7 @@
 # Enterprise Invoice Approval System
 
 ![Java](https://img.shields.io/badge/Java-21-red)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1-green)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-green)
 ![React](https://img.shields.io/badge/React-19-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED)
@@ -204,6 +204,13 @@ Invoice Status → PAID
 ```
 
 ---
+#  Entity Relationship Diagram (ERD)
+
+The following ER diagram illustrates the relationships between organizations, users, roles, permissions, invoices, approvals, payments, notifications, and workflow entities.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/afaafad8-dcb7-41c6-8f0d-c922ebbb88c1" alt="ER Diagram" width="100%">
+</p>
 
 # Docker Architecture
 
@@ -753,6 +760,4 @@ Thank you for visiting this repository.
 Feel free to explore the code, raise issues, suggest improvements, or contribute to the project.
 
 Happy Coding! 🚀
-                     pgAdmin
-                      :5050
-```
+
