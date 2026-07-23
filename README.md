@@ -1,4 +1,4 @@
-<img width="1303" height="896" alt="image" src="https://github.com/user-attachments/assets/2f5a8555-d8ca-4093-bcaf-f2cc5e6aae05" /># Enterprise Invoice Approval System
+# Enterprise Invoice Approval System
 
 ![Java](https://img.shields.io/badge/Java-21-red)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-green)
