@@ -1,120 +1,153 @@
 import Login from "./Login";
-import { Building2, ShieldCheck, Workflow, CircleCheckBig } from "lucide-react";
+import {
+  Building2,
+  ShieldCheck,
+  Workflow,
+  CircleCheckBig,
+  ArrowRight,
+  ArrowUpRight,
+  ReceiptText,
+  History,
+  Sparkles,
+  FileText,
+  ClipboardCheck,
+  Wallet,
+  BadgeCheck,
+  CircleDollarSign,
+  ChevronRight,
+  Clock3,
+} from "lucide-react";
 
 const features = [
   {
     icon: Building2,
     title: "Multi-Tenant Organizations",
     description:
-      "Manage multiple organizations from one secure enterprise platform.",
+      "Manage multiple organizations securely from one centralized enterprise platform.",
   },
   {
     icon: Workflow,
-    title: "Approval Workflows",
+    title: "Smart Approval Workflows",
     description:
-      "Automate configurable invoice approval chains for every organization.",
+      "Configure invoice approval chains based on amount, department and business rules.",
   },
   {
     icon: ShieldCheck,
     title: "Enterprise Security",
     description:
-      "JWT authentication with role-based authorization and secure APIs.",
+      "JWT Authentication, RBAC, audit logs and secure REST APIs for complete protection.",
   },
 ];
 
 export default function LandingPage() {
+  const scrollToFeatures = () => {
+    document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-50">
-      {/* Background */}
+      {/* ================= Background ================= */}
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f01f_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f01f_1px,transparent_1px)] bg-[size:70px_70px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f01a_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f01a_1px,transparent_1px)] bg-[size:70px_70px]" />
 
-      <div className="absolute -top-20 sm:-top-32 left-0 sm:left-10 h-72 w-72 sm:h-[420px] sm:w-[420px] rounded-full bg-indigo-200 opacity-40 blur-3xl" />
+      <div className="absolute -top-40 -left-20 h-[430px] w-[430px] rounded-full bg-indigo-300/40 blur-3xl" />
 
-      <div className="absolute bottom-0 right-0 h-72 w-72 sm:h-[450px] sm:w-[450px] rounded-full bg-cyan-200 opacity-40 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-cyan-300/40 blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl min-h-screen px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 flex items-center">
-        <div className="grid w-full items-center gap-10 lg:gap-24 lg:grid-cols-[1.05fr_0.95fr]">
+      {/* ================= Hero ================= */}
+
+      <section className="relative mx-auto flex min-h-screen max-w-7xl items-center px-5 py-10 sm:px-8 lg:px-10">
+        <div className="grid w-full gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
           {/* LEFT */}
 
-          <div className="order-2 lg:order-1">
-            <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-indigo-700 shadow-sm">
-              <CircleCheckBig size={16} />
-              Trusted Enterprise Platform
+          <div className="order-2 lg:order-1 flex flex-col justify-center">
+            {/* Badge */}
+
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-indigo-200 bg-white px-5 py-2 text-sm font-semibold text-indigo-700 shadow-sm">
+              <Sparkles size={16} />
+              Trusted Enterprise Invoice Platform
             </div>
 
-            <h1 className="mt-6 sm:mt-8 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
-              Enterprise
-              <span className="block bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                Invoice Approval
+            {/* Heading */}
+
+            <h1 className="mt-8 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+              Welcome to
+              <span className="mt-2 block bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                InvoiceFlow
               </span>
-              Platform
             </h1>
 
-            <p className="mt-5 sm:mt-8 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-slate-600">
-              Streamline invoice approvals, payment processing, organization
-              management and role-based access from one secure enterprise-grade
-              platform.
+            {/* Description */}
+
+            <p className="mt-8 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+              InvoiceFlow is an enterprise-grade invoice approval platform
+              designed to simplify financial operations with configurable
+              approval workflows, secure role-based access control, payment
+              tracking and organization management—all from a single dashboard.
             </p>
+
+            {/* Buttons */}
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <button className="rounded-xl bg-indigo-600 px-7 py-3 font-semibold text-white transition hover:bg-indigo-700">
+                Login
+              </button>
+
+              <button
+                onClick={scrollToFeatures}
+                className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3 font-semibold text-slate-700 transition hover:border-indigo-500 hover:text-indigo-600"
+              >
+                Learn More
+                <ArrowRight size={18} />
+              </button>
+            </div>
 
             {/* Stats */}
 
-            <div className="mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-8">
-              <div className="text-center sm:text-left">
-                <h2 className="text-xl sm:text-3xl font-bold text-slate-900">
-                  Multi
-                </h2>
+            <div className="mt-14 grid grid-cols-3 gap-5">
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900">Multi</h2>
 
-                <p className="mt-1 text-xs sm:text-base text-slate-500">
-                  Organizations
-                </p>
+                <p className="mt-1 text-sm text-slate-500">Organizations</p>
               </div>
 
-              <div className="text-center sm:text-left">
-                <h2 className="text-xl sm:text-3xl font-bold text-slate-900">
-                  RBAC
-                </h2>
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900">RBAC</h2>
 
-                <p className="mt-1 text-xs sm:text-base text-slate-500">
-                  Security
-                </p>
+                <p className="mt-1 text-sm text-slate-500">Authorization</p>
               </div>
 
-              <div className="text-center sm:text-left">
-                <h2 className="text-xl sm:text-3xl font-bold text-slate-900">
-                  24×7
-                </h2>
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900">24×7</h2>
 
-                <p className="mt-1 text-xs sm:text-base text-slate-500">
-                  Availability
-                </p>
+                <p className="mt-1 text-sm text-slate-500">Availability</p>
               </div>
             </div>
 
-            {/* Features */}
+            {/* Small Feature Cards */}
 
-            <div className="mt-10 sm:mt-14 space-y-4 sm:space-y-5">
+            <div id="features" className="mt-14 grid gap-5">
               {features.map((feature) => {
                 const Icon = feature.icon;
 
                 return (
                   <div
                     key={feature.title}
-                    className="group flex items-start gap-4 sm:gap-5 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-lg"
+                    className="group flex items-start gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
                   >
-                    <div className="rounded-xl bg-indigo-100 p-2.5 sm:p-3 transition group-hover:bg-indigo-600 shrink-0">
+                    <div className="rounded-xl bg-indigo-100 p-3 transition group-hover:bg-indigo-600">
                       <Icon
-                        size={20}
+                        size={22}
                         className="text-indigo-600 group-hover:text-white"
                       />
                     </div>
 
                     <div>
-                      <h3 className="text-base sm:text-lg font-semibold text-slate-800">
+                      <h3 className="text-lg font-semibold text-slate-800">
                         {feature.title}
                       </h3>
 
-                      <p className="mt-1 sm:mt-2 text-sm leading-6 text-slate-500">
+                      <p className="mt-2 text-sm leading-6 text-slate-500">
                         {feature.description}
                       </p>
                     </div>
@@ -126,13 +159,699 @@ export default function LandingPage() {
 
           {/* RIGHT */}
 
-          <div className="order-1 lg:order-2 flex items-center justify-center lg:justify-end">
-            <div className="w-full max-w-md lg:max-w-xl rounded-3xl border border-slate-200 bg-white p-5 sm:p-8 lg:p-10 shadow-[0_35px_80px_rgba(99,102,241,0.15)]">
+          <div className="order-1 flex items-center justify-center lg:order-2 lg:justify-end">
+            <div className="w-full max-w-md rounded-[32px] border border-slate-200 bg-white p-6 shadow-[0_35px_80px_rgba(99,102,241,0.15)] sm:max-w-lg sm:p-8 lg:max-w-xl lg:p-10">
               <Login />
             </div>
           </div>
         </div>
-      </div>
+      </section>
+      {/* ================= Why InvoiceFlow ================= */}
+
+      <section id="why" className="relative overflow-hidden py-24">
+        {/* Background Glow */}
+
+        <div className="absolute left-0 top-40 h-72 w-72 rounded-full bg-indigo-500/10 blur-[120px]" />
+        <div className="absolute right-0 bottom-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-[120px]" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          {/* Heading */}
+
+          <div className="text-center">
+            {/* <span className="inline-flex rounded-full bg-indigo-100 px-4 py-2 text-sm font-semibold text-indigo-700">
+              WHY CHOOSE INVOICEFLOW
+            </span> */}
+
+            <h2 className="mt-6 text-3xl font-bold text-slate-900 sm:text-5xl">
+              Built for Modern Finance Teams
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+              InvoiceFlow simplifies invoice approvals through secure workflows,
+              automation and enterprise-grade access control—all from one
+              platform.
+            </p>
+          </div>
+
+          {/* Layout */}
+
+          <div className="mt-12 grid gap-8 lg:grid-cols-12">
+            {/* ================= Left Dashboard ================= */}
+
+            <div className="lg:col-span-7">
+              <div className="group relative overflow-hidden rounded-[36px] border border-indigo-200 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-8 text-white shadow-[0_30px_80px_rgba(79,70,229,0.18)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_40px_90px_rgba(79,70,229,0.28)]">
+                {/* Glow */}
+
+                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/20 blur-[120px]" />
+
+                <div className="absolute bottom-0 left-0 h-52 w-52 rounded-full bg-indigo-500/20 blur-[100px]" />
+
+                {/* Grid */}
+
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:45px_45px]" />
+
+                <div className="relative">
+                  {/* Top */}
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-300">
+                      Demo Dashboard
+                      </span>
+
+                      <h3 className="mt-4 text-3xl font-bold">
+                        Enterprise Ready
+                      </h3>
+
+                      <p className="mt-3 max-w-lg leading-7 text-slate-300">
+                        Manage invoice approvals, workflows and payments through
+                        one secure enterprise platform.
+                      </p>
+                    </div>
+
+                    <Sparkles
+                      size={40}
+                      className="text-indigo-300 transition duration-500 group-hover:rotate-12"
+                    />
+                  </div>
+
+                  {/* Stats */}
+
+                  <div className="mt-10 grid grid-cols-3 gap-4">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg">
+                      <p className="text-sm text-slate-400">Pending</p>
+
+                      <h4 className="mt-2 text-3xl font-bold">42</h4>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg">
+                      <p className="text-sm text-slate-400">Approved</p>
+
+                      <h4 className="mt-2 text-3xl font-bold text-emerald-400">
+                        186
+                      </h4>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-lg">
+                      <p className="text-sm text-slate-400">Payments</p>
+
+                      <h4 className="mt-2 text-3xl font-bold text-cyan-400">
+                        ₹9.8L
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* Workflow Card */}
+
+                  <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold">Invoice #INV-2048</h4>
+
+                        <p className="mt-1 text-sm text-slate-400">
+                          Enterprise Software License
+                        </p>
+                      </div>
+
+                      <span className="rounded-full bg-yellow-500/20 px-3 py-1 text-xs font-medium text-yellow-300">
+                        In Review
+                      </span>
+                    </div>
+
+                    {/* Progress */}
+
+                    <div className="mt-6">
+                      <div className="mb-2 flex justify-between text-sm">
+                        <span className="text-slate-400">
+                          Approval Progress
+                        </span>
+
+                        <span>75%</span>
+                      </div>
+
+                      <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                        <div className="h-full overflow-hidden rounded-full bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500">
+                          <div className="h-full w-full animate-pulse bg-white/10" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Approval Steps */}
+
+                    <div className="mt-7 space-y-4">
+                      {[
+                        ["Vendor Submitted", true],
+                        ["Finance Verified", true],
+                        ["Manager Approved", true],
+                        ["CFO Approval", false],
+                      ].map(([label, done]) => (
+                        <div
+                          key={label}
+                          className="flex items-center justify-between"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div
+                              className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                                done
+                                  ? "bg-emerald-500 text-white"
+                                  : "bg-white/10 text-slate-400"
+                              }`}
+                            >
+                              ✓
+                            </div>
+
+                            <span className="text-sm">{label}</span>
+                          </div>
+
+                          <span
+                            className={`text-xs ${
+                              done ? "text-emerald-400" : "text-yellow-400"
+                            }`}
+                          >
+                            {done ? "Done" : "Pending"}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* ================= Recent Activity ================= */}
+
+                    <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                      <div className="mb-5 flex items-center justify-between">
+                        <h4 className="font-semibold text-white">
+                          Recent Activity
+                        </h4>
+
+                        <span className="rounded-full bg-cyan-500/20 px-3 py-1 text-xs text-cyan-300">
+                          Demo
+                        </span>
+                      </div>
+
+                      <div className="space-y-4">
+                        {[
+                          {
+                            title: "Invoice INV-2048 approved",
+                            time: "2 mins ago",
+                            color: "bg-emerald-500",
+                          },
+                          {
+                            title: "Finance verified INV-2039",
+                            time: "16 mins ago",
+                            color: "bg-blue-500",
+                          },
+                          {
+                            title: "Vendor uploaded INV-2053",
+                            time: "40 mins ago",
+                            color: "bg-violet-500",
+                          },
+                        ].map((activity) => (
+                          <div
+                            key={activity.title}
+                            className="flex items-center gap-4 rounded-xl border border-white/5 p-3 transition hover:border-cyan-400/30 hover:bg-white/5"
+                          >
+                            <div
+                              className={`h-3 w-3 rounded-full ${activity.color} animate-pulse`}
+                            />
+
+                            <div>
+                              <p className="text-sm text-white">
+                                {activity.title}
+                              </p>
+
+                              <p className="text-xs text-slate-400">
+                                {activity.time}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ================= Right Grid Starts Here ================= */}
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-5">
+              {[
+                {
+                  icon: Building2,
+                  title: "Multi-Tenant",
+                  desc: "Complete isolation for multiple organizations with dedicated workspaces.",
+                  color: "bg-indigo-100 text-indigo-600",
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "Enterprise Security",
+                  desc: "JWT authentication, RBAC and encrypted APIs keep every action secure.",
+                  color: "bg-cyan-100 text-cyan-600",
+                },
+                {
+                  icon: Workflow,
+                  title: "Approval Engine",
+                  desc: "Dynamic workflows based on invoice amount and approval hierarchy.",
+                  color: "bg-emerald-100 text-emerald-600",
+                },
+                {
+                  icon: CircleDollarSign,
+                  title: "Payment Tracking",
+                  desc: "Track every invoice until successful payment completion.",
+                  color: "bg-orange-100 text-orange-600",
+                },
+                {
+                  icon: History,
+                  title: "Audit Logs",
+                  desc: "Complete activity history for transparency and compliance.",
+                  color: "bg-violet-100 text-violet-600",
+                },
+                {
+                  icon: ReceiptText,
+                  title: "Automation",
+                  desc: "Reduce repetitive manual work with intelligent approval automation.",
+                  color: "bg-pink-100 text-pink-600",
+                },
+              ].map((feature, index) => {
+                const Icon = feature.icon;
+
+                return (
+                  <div
+                    key={feature.title}
+                    className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-3 hover:border-indigo-300 hover:shadow-2xl"
+                  >
+                    {/* Glow */}
+
+                    <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-indigo-500/5 blur-2xl transition-all duration-500 group-hover:bg-indigo-500/15" />
+
+                    {/* Number */}
+
+                    <span className="absolute right-5 top-5 text-xs font-bold text-slate-300">
+                      0{index + 1}
+                    </span>
+
+                    {/* Icon */}
+
+                    <div
+                      className={`flex h-14 w-14 items-center justify-center rounded-2xl ${feature.color} transition-all duration-500 group-hover:rotate-6 group-hover:scale-110`}
+                    >
+                      <Icon size={28} />
+                    </div>
+
+                    {/* Content */}
+
+                    <h3 className="mt-6 text-xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-indigo-600">
+                      {feature.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      {feature.desc}
+                    </p>
+
+                    {/* Bottom */}
+
+                    <div className="mt-6 flex items-center justify-between">
+                      <span className="text-sm font-medium text-indigo-600">
+                        Learn More
+                      </span>
+
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white">
+                        <ArrowUpRight
+                          size={18}
+                          className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Bottom Line */}
+
+                    <div className="absolute bottom-0 left-0 h-1 w-0 rounded-r-full bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-500 transition-all duration-500 group-hover:w-full" />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= Platform Highlights ================= */}
+
+      <section className="relative overflow-hidden bg-slate-950 py-20">
+        {/* Low Density Grid Background */}
+
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:80px_80px]" />
+
+        {/* Glow */}
+
+        <div className="absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-600/20 blur-[130px]" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          {/* Heading */}
+
+          <div className="text-center">
+            {/* <span className="inline-flex rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-300">
+              PLATFORM HIGHLIGHTS
+            </span> */}
+
+            <h2 className="mt-6 text-3xl font-bold text-white sm:text-4xl">
+              Built for Enterprise Scale
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-400">
+              Secure, scalable and optimized for organizations managing complex
+              invoice approval workflows.
+            </p>
+          </div>
+
+          {/* Cards */}
+
+          <div className="mt-16 grid grid-cols-2 gap-5 lg:grid-cols-4">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "100%",
+                subtitle: "Secure Workflow",
+                bg: "from-indigo-500 to-blue-500",
+              },
+              {
+                icon: Building2,
+                title: "Multi",
+                subtitle: "Organizations",
+                bg: "from-cyan-500 to-sky-500",
+              },
+              {
+                icon: CircleDollarSign,
+                title: "RBAC",
+                subtitle: "Authorization",
+                bg: "from-emerald-500 to-green-500",
+              },
+              {
+                icon: Clock3,
+                title: "24×7",
+                subtitle: "Availability",
+                bg: "from-orange-500 to-red-500",
+              },
+            ].map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.title}
+                  className="group rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-indigo-400/40 hover:bg-white/[0.07] hover:shadow-[0_20px_60px_rgba(99,102,241,0.25)]"
+                >
+                  <div
+                    className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r ${item.bg}`}
+                  >
+                    <Icon size={28} className="text-white" />
+                  </div>
+
+                  <h3 className="mt-6 text-3xl font-bold text-white">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-slate-400">{item.subtitle}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      {/* ================= Workflow ================= */}
+
+      <section className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
+        {/* Heading */}
+
+        <div className="text-center">
+          {/* <span className="rounded-full bg-cyan-100 px-4 py-2 text-sm font-semibold text-cyan-700">
+            WORKFLOW
+          </span> */}
+
+          <h2 className="mt-6 text-3xl font-bold text-slate-900 sm:text-4xl">
+            Invoice Approval Workflow
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+            Every invoice follows a secure approval journey before payment,
+            ensuring transparency, compliance and complete auditability.
+          </p>
+        </div>
+
+        {/* Cards */}
+
+        <div
+          className="
+      mt-16
+      flex
+      gap-5
+      overflow-x-auto
+      snap-x
+      snap-mandatory
+      pb-4
+      scrollbar-hide
+      lg:grid
+      lg:grid-cols-5
+      lg:gap-8
+      lg:overflow-visible
+    "
+        >
+          {[
+            {
+              title: "Vendor",
+              description:
+                "Vendor submits invoice along with supporting documents.",
+              icon: FileText,
+              bg: "bg-blue-100",
+              text: "text-blue-600",
+            },
+            {
+              title: "Reviewer",
+              description:
+                "Reviewer validates invoice details and verifies documents.",
+              icon: ClipboardCheck,
+              bg: "bg-violet-100",
+              text: "text-violet-600",
+            },
+            {
+              title: "Finance",
+              description:
+                "Finance checks budgets, accounting policies and compliance.",
+              icon: Wallet,
+              bg: "bg-emerald-100",
+              text: "text-emerald-600",
+            },
+            {
+              title: "CFO",
+              description:
+                "High-value invoices receive final executive approval.",
+              icon: BadgeCheck,
+              bg: "bg-orange-100",
+              text: "text-orange-600",
+            },
+            {
+              title: "Payment",
+              description:
+                "Approved invoices are released for payment and tracking.",
+              icon: CircleDollarSign,
+              bg: "bg-cyan-100",
+              text: "text-cyan-600",
+            },
+          ].map((step, index) => {
+            const Icon = step.icon;
+
+            return (
+              <div
+                key={step.title}
+                className="
+            relative
+            min-w-[280px]
+            snap-center
+            rounded-3xl
+            border
+            border-slate-200
+            bg-white
+            p-6
+            shadow-sm
+            transition-all
+            duration-500
+            hover:-translate-y-3
+            hover:border-indigo-300
+            hover:shadow-2xl
+            hover:scale-[1.03]
+            lg:min-w-0
+          "
+              >
+                {/* Desktop Arrow */}
+
+                {index < 4 && (
+                  <ChevronRight
+                    size={34}
+                    className="absolute -right-6 top-1/2 hidden -translate-y-1/2 text-slate-300 lg:block"
+                  />
+                )}
+
+                {/* Step */}
+
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700">
+                    Step {index + 1}
+                  </span>
+
+                  <div
+                    className={`flex h-14 w-14 items-center justify-center rounded-2xl ${step.bg} transition-transform duration-300 group-hover:scale-110`}
+                  >
+                    <Icon className={step.text} size={28} />
+                  </div>
+                </div>
+
+                {/* Title */}
+
+                <h3 className="mt-6 text-xl font-bold text-slate-900">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+
+                <p className="mt-3 text-sm leading-7 text-slate-500">
+                  {step.description}
+                </p>
+
+                {/* Bottom Line */}
+
+                <div className="mt-6 h-1 w-full rounded-full bg-slate-100">
+                  <div
+                    className="h-1 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 transition-all duration-500"
+                    style={{ width: `${(index + 1) * 20}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+
+      <section className="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 py-24">
+        <div className="mx-auto max-w-5xl px-5 text-center">
+          <h2 className="text-4xl font-bold text-white">
+            Ready to Transform Invoice Approvals?
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-indigo-100">
+            Streamline approvals, improve collaboration and manage enterprise
+            organizations with InvoiceFlow.
+          </p>
+
+          <button className="mt-10 rounded-xl bg-white px-8 py-4 font-semibold text-indigo-700 transition hover:scale-105">
+            Get Started
+          </button>
+        </div>
+      </section>
+
+      {/* ================= Footer ================= */}
+
+      <footer className="relative overflow-hidden bg-slate-950">
+        {/* Grid Background */}
+
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:55px_55px]" />
+
+        {/* Glow */}
+
+        <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[120px]" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-16">
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Brand */}
+
+            <div className="sm:col-span-2 lg:col-span-1">
+              <h2 className="text-3xl font-bold text-white">InvoiceFlow</h2>
+
+              <p className="mt-5 leading-8 text-slate-400">
+                Enterprise Invoice Approval Platform built using React, Spring
+                Boot, PostgreSQL, Spring Security and JWT Authentication.
+              </p>
+            </div>
+
+            {/* Product */}
+
+            <div>
+              <h3 className="mb-5 font-semibold text-white">Product</h3>
+
+              <ul className="space-y-3 text-slate-400">
+                {["Features", "Workflow", "Security", "Organizations"].map(
+                  (item) => (
+                    <li
+                      key={item}
+                      className="cursor-pointer transition hover:text-indigo-400"
+                    >
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            {/* Resources */}
+
+            <div>
+              <h3 className="mb-5 font-semibold text-white">Resources</h3>
+
+              <ul className="space-y-3 text-slate-400">
+                {[
+                  "Documentation",
+                  "Support",
+                  "Privacy Policy",
+                  "Terms & Conditions",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="cursor-pointer transition hover:text-indigo-400"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Technology */}
+
+            <div>
+              <h3 className="mb-5 font-semibold text-white">Technology</h3>
+
+              <ul className="space-y-3 text-slate-400">
+                {[
+                  "React + Tailwind CSS",
+                  "Spring Boot",
+                  "Spring Security",
+                  "PostgreSQL",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="cursor-pointer transition hover:text-indigo-400"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom */}
+
+          <div className="mt-14 flex flex-col items-center justify-between gap-5 border-t border-white/10 pt-8 text-sm text-slate-500 md:flex-row">
+            <p>© 2026 InvoiceFlow. All rights reserved.</p>
+
+            <div className="flex gap-6">
+              <a href="#" className="transition hover:text-indigo-400">
+                GitHub
+              </a>
+
+              <a href="#" className="transition hover:text-indigo-400">
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
